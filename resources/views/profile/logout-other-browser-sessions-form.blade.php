@@ -1,10 +1,10 @@
 <x-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        {{ __('Sesiones de Navegadores') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Manage and log out your active sessions on other browsers and devices.') }}
+        {{ __('Administra y cierra sesión de tus sesiones activas en otros navegadores y dispositivos.') }}
     </x-slot>
 
     <x-slot name="content">
@@ -39,7 +39,7 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
+                                        <span class="text-green-500 font-semibold">{{ __('Este dispositivo') }}</span>
                                     @else
                                         {{ __('Last active') }} {{ $session->last_active }}
                                     @endif
@@ -53,7 +53,7 @@
 
         <div class="flex items-center mt-5">
             <x-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Log Out Other Browser Sessions') }}
+                {{ __('Cerrar sesión de otras sesiones de navegador') }}
             </x-button>
 
             <x-action-message class="ml-3" on="loggedOut">

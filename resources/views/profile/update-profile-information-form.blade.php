@@ -1,10 +1,10 @@
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('Información de Perfil') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Actualiza tu información de perfil y dirección de correco electrónico.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -24,7 +24,7 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <x-label for="photo" value="{{ __('Photo') }}" />
+                <x-label class="text-gray-600" for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
@@ -38,13 +38,13 @@
                     </span>
                 </div>
 
-                <x-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
+                <x-secondary-button class="mt-2 mr-2 bg-blue-800 hover:bg-blue-500" type="button" x-on:click.prevent="$refs.photo.click()">
+                    {{ __('Selecionar una nueva foto') }}
                 </x-secondary-button>
 
                 @if ($this->user->profile_photo_path)
-                    <x-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
+                    <x-secondary-button type="button" class="mt-2 bg-red-600 hover:bg-red-400" wire:click="deleteProfilePhoto">
+                        {{ __('Eliminar foto') }}
                     </x-secondary-button>
                 @endif
 
@@ -54,15 +54,15 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}" />
-            <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" required autocomplete="name" />
+            <x-label-secondary for="name" value="{{ __('Nombre') }}" />
+            <x-input id="name" type="text" class="mt-1 block w-full bg-white" wire:model.defer="state.name" required autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Email') }}" />
-            <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" required autocomplete="username" />
+            <x-label-secondary for="email" value="{{ __('Correo Electrónico') }}" />
+            <x-input id="email" type="email" class="mt-1 block w-full bg-white" wire:model.defer="state.email" required autocomplete="username" />
             <x-input-error for="email" class="mt-2" />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
@@ -89,7 +89,7 @@
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-button>
     </x-slot>
 </x-form-section>
