@@ -17,7 +17,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    /* CAMBIAR ESTA RUTA YA QUE USAREMOS OTRA PARA QUE AL MOMENTO DE LOGEARME ME REDIRIJA AL INICIO
+    public const HOME = '/dashboard'; */
+
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -35,6 +38,11 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            /* Pasarle la ruta admin.php paraque lo reconosca en la web */
+            Route::middleware('web', 'auth')
+                ->prefix('dashboard-admin')
+                ->group(base_path('routes/admin.php'));
         });
     }
 }
